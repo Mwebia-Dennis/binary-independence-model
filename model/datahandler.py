@@ -10,14 +10,16 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import math
 import nltk
+import os
 
 class DataHandler():
 	"""docstring for DataHandler"""
-	def __init__(self, limiter = 5000):
+	def __init__(self):
 		# param limiter => used to control number of training docs being loaded because of memory overload
 		self.limiter = limiter
-		self.path = "C:\\Users\\your name\\Desktop\\work\\HWO4\\HW04\\documents"
-		self.labels_path = "C:\\Users\\your name\\Desktop\\work\\HWO4\\HW04\\file_label.txt"
+		self.current_directory = os.path.dirname(os.path.realpath(__file__))
+		self.path = self.current_directory + "\\HW04\\documents"
+		self.labels_path = self.current_directory + "\\HW04\\file_label.txt"
 		nltk.download('stopwords')
 		nltk.download('punkt')
 		self.load_dataset()
@@ -27,15 +29,12 @@ class DataHandler():
 
 	def load_dataset(self):
 		results = defaultdict(list)
-		i = 0
 		print('\n')
 		print("loading dataset: please wait...\n")
 		for file in Path(self.path).iterdir():
-			if i < self.limiter:       
-			  with open(file, "r") as file_open:
+			with open(file, "r") as file_open:
 			    results["file_name"].append(file.name)
 			    results["text"].append(file_open.read())
-			  i = i+1
 		data = pd.DataFrame(results)
 		#removing .txt extension
 		data['file_name'] = data['file_name'].apply(lambda name: name.split(".")[0])
