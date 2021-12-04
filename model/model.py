@@ -16,9 +16,9 @@ class BIMModel():
 	def __init__(self):
 		print("starting model...")
 		print('\n')
-		data_handler = DataHandler()
-		self.data = data_handler.data
-		self.query_path = "C:\\Users\\your name\\Desktop\\work\\HWO4\\HW04\\query.txt"
+		self.data_handler = DataHandler()
+		self.data = self.data_handler.data
+		self.query_path = self.data_handler.current_directory + "\\HW04\\query.txt"
 		self.get_word_list()
 		self.get_inverted_index()
 		self.generate_rsv_weights()
@@ -73,7 +73,7 @@ class BIMModel():
 	def get_idf(self,word):
 		word_dict = self.word_dict
 		data = self.data
-		return math.log(data.shape[0] / (len(word_dict[word])))
+		return (1 + math.log(data.shape[0] / (len(word_dict[word])))) # add 1 for idf smoothing
 
 	def generate_doc_rsv(self,file_name, query):
 		#calculates the rsv of a document based on the query provided
