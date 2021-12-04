@@ -10,8 +10,7 @@ implementing this code is as easy as importing the BIMModel class, then search t
 
 ## how to run code
 ### python ( .py files ) codes
-* Change the path and labels_path variable  in the datahandler class and the query path in the model class
-* Change the limiter variable of datahandler class to the size of your dataset
+* unzip the dataset (HW04 FILE)
 * Install all necessary packages
 * create python file and implement the BIMModel.search_query(search_query, N_retrieved_docs)
 
