@@ -1,8 +1,7 @@
 # binary-independence-model
 a notebook and python code aimed at demonstrating information retrieval using binary independence model
 ## example usage
-implementing this code is as easy as importing the BIMModel class, then search the query, with the limit of documents you want to retrieve. The search_query function takes 2 parameters, the query to be searched and the number/limit of results you want to retrieve
-- the steps are as follows:
+implementing this code is as easy as importing the BIMModel class, then search the query, with the limit of documents you want to retrieve. The search_query function takes 2 parameters, the query to be searched and the number/limit of results you want to retrieve. The steps are as follows:
 
 - from model import BIMModel
 
